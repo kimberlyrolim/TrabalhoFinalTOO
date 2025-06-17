@@ -38,16 +38,10 @@ public class TesteTrabalho {
         System.out.println("Estoque de " + produto3.getNome() +" " + produto3.getQtdEstoque());
         System.out.println();
 
-        System.out.println("--- Funcionários ---");
         Funcionario func1 = new Funcionario(1, "Kimberly", "123.456.789-10", "98877-6655", "Avenida Brasil, 10", "Vendedor", LocalDate.of(2020, 5, 15));
-        System.out.println("Funcionário criado: " + func1);
-        System.out.println();
-
-        System.out.println("--- Clientes ---");
+      
         Cliente cliente1 = new Cliente(1, "Mariana", "987.654.321-10", "91122-3344", "Av. Presidente Vargas, 20", "mariana@teste.com");
-        System.out.println("Cliente criado: " + cliente1);
-        System.out.println();
-        
+    
         System.out.println("--- Venda 1 ---");
         Venda venda1 = new Venda(1, cliente1, func1);
         System.out.println("Venda criada: " + venda1.getIdVenda() + " para cliente: " + venda1.getClienteAssociado().getNome());
@@ -67,9 +61,6 @@ public class TesteTrabalho {
         System.out.println(venda1); 
         System.out.println();
 
-        System.out.println("--- Histórico do Cliente ---");
-        cliente1.consultarHistorico();
-        System.out.println();
 
         System.out.println("--- Estoque Atualizado ---");
         System.out.println("Estoque de " + produto1.getNome() + ": " + produto1.getQtdEstoque());
@@ -86,17 +77,18 @@ public class TesteTrabalho {
         cliente1.adicionarCompraAoHistorico(venda2);
         func1.registrarVenda(venda2);
         
-        System.out.println("\n--- Nota Fiscal 2 ---");
-        System.out.println(venda2);
-        
-        System.out.println("\n--- Histórico do Cliente Atualizado ---");
-        cliente1.consultarHistorico();
-        System.out.println();
-        
         System.out.println("--- Estoque Atualizado ---");
         System.out.println("Estoque de " + produto1.getNome() + ": " + produto1.getQtdEstoque());
         System.out.println("Estoque de " + produto2.getNome() + ": " + produto2.getQtdEstoque());
         System.out.println("Estoque de " + produto3.getNome() + ": " + produto3.getQtdEstoque());
-
+      
+        System.out.println("\n--- Histórico do Cliente ---");
+        cliente1.consultarHistorico();
+        System.out.println();
+        
+        System.out.println("\n--- Histórico do Funcionário ---");
+        func1.consultarHistorico();
+        System.out.println();
+        
     }
 }

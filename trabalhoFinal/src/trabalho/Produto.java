@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package trabalho;
+// Arquivo: trabalho/Produto.java
 
-/**
- *
- * @author 20182PF.CC0076
- */
+package trabalho;
 
 public class Produto {
     private int idProduto;
@@ -15,99 +8,45 @@ public class Produto {
     private String descricao;
     private double preco;
     private int qtdEstoque;
-    private boolean servico;
+    private boolean isServico;
 
-    public Produto(int idProduto, String nome, String descricao, double preco, int qtdEstoque, boolean servico) {
+    public Produto(int idProduto, String nome, String descricao, double preco, int qtdEstoque, boolean isServico) {
         this.idProduto = idProduto;
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
         this.qtdEstoque = qtdEstoque;
-        this.servico = servico;
+        this.isServico = isServico;
     }
 
-    public int getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(int idProduto) {
-        this.idProduto = idProduto;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
-
-    public int getQtdEstoque() {
-        return qtdEstoque;
-    }
-
-    public void setQtdEstoque(int qtdEstoque) {
-        this.qtdEstoque = qtdEstoque;
-    }
-
-    public boolean isServico() {
-        return servico;
-    }
-
-    public void setServico(boolean servico) {
-        this.servico = servico;
-    }
-
-    public boolean cadastrarProduto() {
-        System.out.println("Produto cadastrado: " + nome + " (ID: " + idProduto + ")");
-        return true;
-    }
-
-    public void atualizarEstoque(int quantidadeVendidaOuAdicionada) {
-        if (quantidadeVendidaOuAdicionada > 0 && this.qtdEstoque >= quantidadeVendidaOuAdicionada) {
-            this.qtdEstoque -= quantidadeVendidaOuAdicionada;
-            System.out.println("Estoque do produto " + nome + " atualizado para: " + this.qtdEstoque);
-        } else if (quantidadeVendidaOuAdicionada <=0) {
-            System.err.println("Quantidade para atualização de estoque deve ser positiva.");
+    // Métodos que a classe Venda precisa
+    public boolean verificarEstoque(int quantidade) {
+        if (this.isServico) {
+            return true; // Serviços sempre têm "estoque"
         }
-        else {
-            System.err.println("Erro ao atualizar estoque do produto " + nome + ": quantidade insuficiente.");
+        return this.qtdEstoque >= quantidade;
+    }
+
+    public void removerDoEstoque(int quantidade) {
+        if (!this.isServico) {
+            this.qtdEstoque -= quantidade;
         }
     }
     
-    public void setNovoEstoque(int novoEstoque) {
-        this.qtdEstoque = novoEstoque;
-         System.out.println("Estoque do produto " + nome + " definido para: " + this.qtdEstoque);
+    public void cadastrarProduto() {
+        System.out.println("Produto/Serviço '" + this.nome + "' cadastrado.");
+    }
+    
+    // Getters que outras classes usam
+    public String getNome() {
+        return this.nome;
     }
 
-
-    public boolean verificarEstoque(int quantidadeDesejada) {
-        return this.qtdEstoque >= quantidadeDesejada;
+    public double getPreco() {
+        return this.preco;
     }
-
-    @Override
-    public String toString() {
-        return 
-               " Produto: " + idProduto +
-               ", Nome: " + nome + '\'' +
-               ", Preço: " + String.format("%.2f",preco) +
-               ", QtdEstoque: " + qtdEstoque +
-               ", Serviço: " + servico;
+    
+    public int getQtdEstoque(){
+        return this.qtdEstoque;
     }
 }

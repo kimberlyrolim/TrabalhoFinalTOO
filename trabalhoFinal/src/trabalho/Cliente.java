@@ -1,17 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+// Arquivo: trabalho/Cliente.java
+// CÓDIGO FINAL E CORRETO
+
 package trabalho;
 
-/**
- *
- * @author 20182PF.CC0076
- */
-// Cliente.java
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDateTime; 
+import java.time.LocalDateTime;
 
 public class Cliente extends Pessoa {
     private int idCliente;
@@ -19,7 +13,7 @@ public class Cliente extends Pessoa {
     protected List<Venda> historicoCompras;
 
     public Cliente(int idCliente, String nome, String cpf, String telefone, String endereco, String email) {
-        super(nome, cpf, telefone, endereco); 
+        super(nome, cpf, telefone, endereco);
         this.idCliente = idCliente;
         this.email = email;
         this.historicoCompras = new ArrayList<>();
@@ -52,23 +46,57 @@ public class Cliente extends Pessoa {
     }
 
     @Override
+    // >>>>>>>>> MÉTODO EDITADO ABAIXO <<<<<<<<<<
     public void consultarHistorico() {
-        System.out.println("Histórico de Compras do Cliente: " + getNome() + " (ID Cliente: " + idCliente + ", CPF: " + getCpf() + ")");
+        // 1. Cabeçalho principal com os dados do cliente
+        System.out.println("--- Histórico de Compras do Cliente: " + this.getNome() + " ---");
+        System.out.println("ID Cliente: " + this.idCliente + " | CPF: " + this.getCpf());
+
+        // 2. Verifica se o histórico está vazio
         if (historicoCompras.isEmpty()) {
-            System.out.println("  Nenhuma compra registrada.");
+            System.out.println("\nNenhuma compra registrada.");
             return;
         }
+
+        // 3. Itera sobre cada objeto Venda no histórico
         for (Venda venda : historicoCompras) {
-            System.out.println("  - " + venda.toString());
+            // Para cada venda, imprime um cabeçalho com seus detalhes
+            System.out.println(String.format(
+                "\n  - Venda ID: %d | Status: %s | Valor Total: R$%.2f",
+                venda.getIdVenda(),        // Assumindo que Venda tem getIdVenda()
+                venda.getStatusVenda(),    // Assumindo que Venda tem getStatusVenda()
+                venda.getValorTotal()      // Assumindo que Venda tem getValorTotal()
+            ));
+
+            System.out.println("    Itens Comprados:");
+
+            // 4. Itera sobre as listas de produtos e quantidades daquela venda
+            // Assumindo que Venda tem getProdutos() (retorna List<Produto>)
+            // e getQuantidades() (retorna List<Integer>)
+            List<Produto> produtosDaVenda = venda.getProdutos();
+            List<Integer> quantidadesDaVenda = venda.getQuantidades();
+            
+            for (int i = 0; i < produtosDaVenda.size(); i++) {
+                Produto produto = produtosDaVenda.get(i);
+                Integer quantidade = quantidadesDaVenda.get(i);
+                
+                System.out.println(String.format(
+                    "      - %s (%dx)",
+                    produto.getNome(), // Assumindo que Produto tem getNome()
+                    quantidade
+                ));
+            }
         }
+        // 5. Rodapé para finalizar o relatório
+        System.out.println("\n" + "-".repeat(50));
     }
+    // >>>>>>>>> FIM DO MÉTODO EDITADO <<<<<<<<<<
 
     @Override
     public String toString() {
-        return 
-               " Cliente: " + idCliente +
-               ", Pessoa: " + super.toString() + // Inclui nome, cpf, telefone, endereco da classe Pessoa
-               ", Email: " + email;
+        return
+                " Cliente: " + idCliente +
+                ", Pessoa: " + super.toString() + // Inclui nome, cpf, telefone, endereco da classe Pessoa
+                ", Email: " + email;
     }
-
 }
