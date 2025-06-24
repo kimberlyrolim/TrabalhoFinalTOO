@@ -1,5 +1,3 @@
-# Arquivo: venda.py
-# FINAL E CORRETO (parceiro do produto.py que você já corrigiu)
 
 from datetime import datetime
 from cliente import Cliente
@@ -18,7 +16,6 @@ class Venda:
         self._lista_de_produtos = []
         self._lista_de_quantidades = []
 
-        # Linha que corrige o histórico em branco
         if cliente:
             cliente.adicionar_venda_ao_historico(self)
 
@@ -41,13 +38,10 @@ class Venda:
             print("Erro: A quantidade deve ser positiva.")
             return
 
-        # 1. Chama o método de verificação que existe em produto.py
         if not produto.verificar_estoque(quantidade):
             print(f"Erro: Estoque insuficiente para '{produto.nome}'.")
             return
         
-        # 2. <<< AQUI ESTÁ A CORREÇÃO >>>
-        #    Chama o método com o nome correto que existe em produto.py
         produto.remover_do_estoque(quantidade)
 
         indice = self._encontrar_indice_produto(produto)
@@ -58,7 +52,6 @@ class Venda:
             self._lista_de_produtos.append(produto)
             self._lista_de_quantidades.append(quantidade)
         
-        # Removi o print daqui para usar o que está dentro de remover_do_estoque
 
     def _calcular_valor_total(self):
         total = 0.0

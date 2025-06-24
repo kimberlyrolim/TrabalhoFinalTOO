@@ -1,4 +1,3 @@
-// Arquivo: trabalho/Produto.java
 
 package trabalho;
 
@@ -22,7 +21,7 @@ public class Produto {
     // Métodos que a classe Venda precisa
     public boolean verificarEstoque(int quantidade) {
         if (this.isServico) {
-            return true; // Serviços sempre têm "estoque"
+            return true; 
         }
         return this.qtdEstoque >= quantidade;
     }
@@ -37,7 +36,6 @@ public class Produto {
         System.out.println("Produto/Serviço '" + this.nome + "' cadastrado.");
     }
     
-    // Getters que outras classes usam
     public String getNome() {
         return this.nome;
     }

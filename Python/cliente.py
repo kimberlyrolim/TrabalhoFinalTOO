@@ -1,7 +1,4 @@
-# Arquivo: cliente.py
-# FINAL E CORRETO
 
-# Supondo que você tenha um arquivo pessoa.py, caso contrário, remova a herança
 from pessoa import Pessoa 
 
 class Cliente(Pessoa):
@@ -15,11 +12,9 @@ class Cliente(Pessoa):
     def id_cliente(self) -> int:
         return self._id_cliente
     
-    # Este método é chamado pela Venda para preencher a lista de histórico
     def adicionar_venda_ao_historico(self, venda):
         self.historico_compras.append(venda)
 
-    # Este método lê a lista de histórico e a exibe
     def consultar_historico(self):
         print(f"\n--- Histórico de Compras de: {self.nome} ---")
         if not self.historico_compras:
@@ -27,9 +22,7 @@ class Cliente(Pessoa):
             return
 
         for venda in self.historico_compras:
-            # Acessa os atributos da venda para exibir
             print(f"\n  ID da Venda: {venda._id_venda} | Status: {venda._status} | Total: R$ {venda.valor_total:.2f}")
-            # Itera sobre os itens daquela venda específica
             for produto, quantidade in zip(venda._lista_de_produtos, venda._lista_de_quantidades):
                 print(f"    - Item: {produto.nome} ({quantidade}x)")
         

@@ -1,8 +1,5 @@
-# Arquivo: produto.py
-# COLE ESTE CÓDIGO NO ARQUIVO
 
 class Produto:
-    """Representa um produto ou serviço, gerenciando seu próprio estoque."""
     def __init__(self, id_produto: int, nome: str, descricao: str, preco: float, qtd_estoque: int = 0, servico: bool = False):
         self._id_produto = id_produto
         self.nome = nome
@@ -21,7 +18,6 @@ class Produto:
             return True
         return self._qtd_estoque >= quantidade_desejada
 
-    # ESTE É O MÉTODO QUE ESTÁ FALTANDO NO SEU ARQUIVO
     def remover_do_estoque(self, quantidade_a_remover: int):
         """Remove uma quantidade do estoque. Não faz nada se for um serviço."""
         if not self.servico and self.verificar_estoque(quantidade_a_remover):

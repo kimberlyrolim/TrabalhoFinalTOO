@@ -1,8 +1,6 @@
-// Arquivo: trabalho/Pessoa.java
 
 package trabalho;
 
-// Classe base para Cliente e Funcionario
 public abstract class Pessoa {
     protected String nome;
     protected String cpf;
@@ -16,7 +14,7 @@ public abstract class Pessoa {
         this.endereco = endereco;
     }
 
-    // Getters que as classes filhas precisam
+    // Getters que as  filhas precisam
     public String getNome() {
         return nome;
     }
@@ -25,7 +23,6 @@ public abstract class Pessoa {
         return cpf;
     }
     
-    // Um método abstrato pode forçar as classes filhas a terem seu próprio consultarHistorico
     public abstract void consultarHistorico();
 
     @Override

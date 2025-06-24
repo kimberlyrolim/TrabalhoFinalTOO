@@ -4,7 +4,7 @@ class Pessoa(ABC):
     """Classe base abstrata para Cliente e Funcionario."""
     def __init__(self, nome: str, cpf: str, telefone: str, endereco: str):
         self._nome = nome
-        self._cpf = cpf  # Em um projeto real, aqui teria uma validação
+        self._cpf = cpf  
         self._telefone = telefone
         self._endereco = endereco
 
@@ -20,7 +20,6 @@ class Pessoa(ABC):
     def cpf(self) -> str:
         return self._cpf
 
-    # Omitindo setter de CPF para simplicidade, mas poderia ser adicionado com validação
 
     @property
     def telefone(self) -> str:
