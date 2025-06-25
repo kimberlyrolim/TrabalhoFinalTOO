@@ -1,5 +1,4 @@
-// Arquivo: trabalho/Venda.java
-// CÓDIGO FINAL E CORRETO
+
 
 package trabalho;
 

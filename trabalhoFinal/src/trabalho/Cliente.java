@@ -1,5 +1,4 @@
-// Arquivo: trabalho/Cliente.java
-// CÓDIGO FINAL E CORRETO
+
 
 package trabalho;
 
